@@ -17,7 +17,7 @@ To remove functionality from the bot or if you want to change the command names 
 If you wish to add your own functions to the bot, then derive a new command class from `BaseCommand` (located in `Support/BaseCommand`) and overwrite the corresponding functions. Also do not forget to include the newly created command in the corresponding command handler.
 
 # Installation Docker
-To run the bot in docker, update the `docker-compose.yaml` to include a path to the music folder you want to use. Create a `.env` file with your credentials, an example is included. To start the bot, run:
+To run the bot in docker, update the `docker-compose.yaml` to include a path to the music folder you want to use. Create a `.env` file with your credentials, an example is included. To start the bot, run: \
 `docker-compose up --build -d`
 
 # Commands (everyone)
