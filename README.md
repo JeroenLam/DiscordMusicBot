@@ -1,12 +1,12 @@
-# DiscordBotFoorKoeluhMenzhen
+# Discord Music Bot
 
-This repository contains the code for a discord bot used on the 'Hed huiz foor koeluh mozelen' server. Feel free to clone or fork the code for your own use.
+This repository contains the code for a music bot. Feel free to clone or fork the code for your own use.
 
 To extend the bot you can derive a new command object from the existing `BaseCommand` and overwrite the `async def execute(self, message)` function with the actual functionallity of the command. Also overwrite the `async def help(self)` that returns the command discription for the help function.
 
 The current framework support admin users. These can be set in the `.env` file (for an example see `ex-.env-file`). These commands can be defined in the `AdminCommands/` forlder and are defined in the same way as normal commands.
 
-# Instalation
+# Instalation manual
 Before you start please make sure you have the following packages installed: \
 `discord.py[voice]`
 
@@ -16,47 +16,41 @@ To remove functionality from the bot or if you want to change the command names 
 
 If you wish to add your own functions to the bot, then derive a new command class from `BaseCommand` (located in `Support/BaseCommand`) and overwrite the corresponding functions. Also do not forget to include the newly created command in the corresponding command handler.
 
-## Features (everyone)
-Currently the bot supports the following commands:
+# Installation Docker
+To run the bot in docker, update the `docker-compose.yaml` to include a path to the music folder you want to use. Create a `.env` file with your credentials, an example is included. To start the bot, run:
+`docker-compose up --build -d`
 
-#### HelloWorldCommand.py
-`hw` Send 'Hello World!' back to the user, as well as some general information about the bot.
-
-#### InspiroCommands.py
-Dependencies: `urllib.request`, `string`, `ast` \
-`quote` Generates a inspirobot quote (image). \
-`quotexmas` Generates a festive inspirobot quote (image). \
-`quotem` Generates a inspirobot audio quote. 
-
-#### SoundBoardCommand.py
-Dependencies: `discord.py[voice]` \
-If you want to make use of the soundboard command then first add a folder `SoundBoard`. \
-`sb <name | list | random>` Plays the audio file `<name>.mp3`. Will return a list of all available files when used with list. Will return a random sound when called with random. 
-`sbset <name>` Set `<name>.mp3` as the join sound of the user calling the command.
-
-#### TTSCommands.py
-Dependencies: `googletrans`, `gtts` \
-`tts <text>` Tim-to-speech, converts text to audio in the current channel in a dutch voice. \
-`tts2 <language> <text>` Text-to-speech, converts text to audio in the current channel in a `<language>` voice. \
-`tttt <language> <text>` Translates 2 a language of your choise to text, e.g. nl, en, es, ja, ru. \
-`ttts <language> <text>` Translates 2 a language of your choise to voice, e.g. nl, en, es, ja, ru. \
-
-Features that are currently being worked on (mainly based on features that where implemented in the old bot) \
-- [x] `help` Shows a list of all commands and their descriptions based on the data specified in each command object. \
-
-#### DisconnectCommand.py
-`disconnect` Disconnects the bot from its current voice channel.
+# Commands (everyone)
+The following list is generated using the `help` command. Note that the appropriate profix should be added to these commands.
+```c         : Connect the bot to your voice channel
+connect   : Connect the bot to your voice channel
+d         : Disconnect the bot from your voice channel
+disconnect: Disconnect the bot from your voice channel
+a         : <song-1> ... <song-n>: Add songs to the queue
+add       : <song-1> ... <song-n>: Add songs to the queue
+ar        : <num> <filter>: Add <num> songs to the queue containing <filter> in their name
+addr      : <num> <filter>: Add <num> songs to the queue containing <filter> in their name
+s         : Start playing songs from the queue
+start     : Start playing songs from the queue
+q         : Prints the current queue.
+queue     : Prints the current queue.
+p         : Pause the song
+pause     : Pause the song
+stop      : Stop playing songs from the queue
+rm        : <songname> ... <songname: Removes next instance of <songname> from the queue
+rmall     : <songname> ... <songname>: Removes all instances of <songname> from the queue
+rmf       : <string> ... <string>: Removes next instance containing <string> from the queue
+rmfall    : <string> ... <string>: Removes all instances containing <string> from the queue
+skip      : Skip the current song
+l         : List all songs
+list      : List all songs
+```
   
-## Features (admins)
-Currently the bot supports the following commands:
-
-#### AdminSoundBoardCommands.py
-This is the admin interface that corresponds with the `SoundBoardCommand.py` functions. It supports the following commands: \
-`sbadd <attached file.mp3>` Adds the `<file>.mp3` to the soundboard folder. \
-`sbrm <fileName_1> ... <fileName_N>` Remove `<fileName_i>.mp3` from the soundboard folder. \
-`sbmv <fileName_old> <fileName_new>` Renames `<fileName_old>.mp3` to `<fileName_new>.mp3`.
-
-
-### Future feature ideas
-A ticketing system for non admins to add to ask questions which are stored in the bot until resolved. The tickets can then be send to the moderators or be pushed into a specific channel that might be set via a command. The admins will have the option to resolve the question which will remove it from the list (and possibly delete the original message). \
-Combined with this ticketing system a FAQ command can be added such that admins can add or remove entries such that you do not get the same question over and over again.
+# Commands (admins)
+The following list is generated using the `help` command. Note that the appropriate profix should be added to these commands.
+```
+add       : <name> : Add a song to the server
+mv        : <old name> <new name> : Rename a song on the server
+cp        : <old name> <new name> : Copy a song
+rm        : <song name> ... <song name> : Delete song(s) from the server
+```
