@@ -40,4 +40,3 @@ class CommandHandler(BaseCommandHandler):
         self.addCommand('skip', SkipCommand())
         self.addCommand('l', ListMusicCommand())
         self.addCommand('list', ListMusicCommand())
-        self.addCommand('adds', AddStreamCommand())
