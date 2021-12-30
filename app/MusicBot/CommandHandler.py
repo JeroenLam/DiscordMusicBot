@@ -12,6 +12,7 @@ from MusicBot.Commands.removeComands import *
 from MusicBot.Commands.skipCommand import SkipCommand
 from MusicBot.Commands.addRandomCommand import AddRandom2QueueCommand
 from MusicBot.Commands.listMusicCommand import ListMusicCommand
+from MusicBot.Commands.addStreamCommand import AddStreamCommand
 
 class CommandHandler(BaseCommandHandler):
     # On initialisation, define all commands in the command handler
@@ -39,3 +40,4 @@ class CommandHandler(BaseCommandHandler):
         self.addCommand('skip', SkipCommand())
         self.addCommand('l', ListMusicCommand())
         self.addCommand('list', ListMusicCommand())
+        self.addCommand('adds', AddStreamCommand())
