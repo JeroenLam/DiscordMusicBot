@@ -45,8 +45,3 @@ class MusicBotClient(discord.Client):
             if self.ADMINS.count(str(message.author)):
                 message.content = message.content[len(self.ADMINPREFIX):]       # Remove prefix from the command
                 await self.adminCommandHandler.run(message, self.playerMap[serverId])                     # Execute command
-
-    # Disconnect bot if no one is left
-    async def on_voice_state_update(self, member, before, after):
-        if member == self.user:   # If own message
-            return
