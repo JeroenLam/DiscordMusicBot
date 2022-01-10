@@ -50,11 +50,3 @@ class MusicBotClient(discord.Client):
     async def on_voice_state_update(self, member, before, after):
         if member == self.user:   # If own message
             return
-
-        # If the user moved away from the channel and the bot is the only one left, disconnect
-        if before.channel != after.channel:
-            try:
-                if len(before.channel.voice_states) == 1:
-                    await before.channel.guild.voice_client.disconnect()
-            except:
-                return
