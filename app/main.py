@@ -5,5 +5,8 @@ from MusicBot.MusicBotClient import *              # Import the actual discord c
 load_dotenv()                       # Load variables from .env into system
 TOKEN = os.getenv('DISCORD_TOKEN')  # Retreive the discord token
 
-client = MusicBotClient()
+intents = discord.Intents.default()
+intents.message_content = True
+client = MyClient(intents=intents)
+
 client.run(TOKEN)
